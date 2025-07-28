@@ -1,0 +1,5 @@
+# format all file
+npx --no -- lint-staged
+
+# lint
+nx run-many -t lint --fix --output-style static

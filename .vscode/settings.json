@@ -1,0 +1,5 @@
+{
+  "nxConsole.generateAiAgentRules": true,
+  "files.autoSave": "onFocusChange",
+  "eslint.validate": ["json"],
+}
