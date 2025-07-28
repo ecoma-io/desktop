@@ -1,0 +1,108 @@
+
+# Coding Standards
+
+## Code Style
+- Use **TypeScript** for all new code
+- Follow **ESLint** rules strictly
+- Use **meaningful variable and function names**
+- Add **JSDoc comments** for public APIs
+- Use **consistent indentation** (2 spaces)
+- Prefer **const** over let when possible
+- Use **arrow functions** for callbacks
+
+## Language Guidelines
+
+### Vietnamese (Tiếng Việt)
+- **JSDoc comments**: Viết bằng tiếng Việt
+- **Code comments**: Viết bằng tiếng Việt
+- **Test case names**: Viết bằng tiếng Việt
+- **Function descriptions**: Viết bằng tiếng Việt
+- **Variable descriptions**: Viết bằng tiếng Việt
+
+### English (Tiếng Anh)
+- **Log messages**: Viết bằng tiếng Anh
+- **Error messages**: Viết bằng tiếng Anh
+- **Variable names**: Sử dụng tiếng Anh
+- **Function names**: Sử dụng tiếng Anh
+- **File names**: Sử dụng tiếng Anh
+
+## File Organization
+- Keep **related files together**
+- Use **descriptive file names**
+- Follow the **existing project structure**
+- Export functions from **index files**
+- Use **barrel exports** when appropriate
+
+## Testing
+- Write **comprehensive unit tests** for new functionality
+- Use **Jest** for testing framework
+- **Mock external dependencies**
+- Test **edge cases and error conditions**
+- Aim for **high test coverage**
+- Use **descriptive test names in Vietnamese**
+
+## Best Practices
+- Write **self-documenting code**
+- Keep functions **small and focused**
+- Use **early returns** to reduce nesting
+- Handle **errors gracefully**
+- Use **TypeScript strict mode**
+- Prefer **composition over inheritance**
+
+## Naming Conventions
+- **Variables**: camelCase (English)
+- **Functions**: camelCase (English)
+- **Classes**: PascalCase (English)
+- **Constants**: UPPER_SNAKE_CASE (English)
+- **Files**: kebab-case (English)
+- **Directories**: kebab-case (English)
+
+## Documentation
+- Add **JSDoc comments in Vietnamese** for public APIs
+- Include **parameter types** and descriptions in Vietnamese
+- Document **return values** in Vietnamese
+- Add **usage examples** for complex functions in Vietnamese
+- Keep documentation **up to date**
+
+## Examples
+
+### JSDoc Comments (Vietnamese)
+```typescript
+/**
+ * Tính toán tổng của hai số
+ * @param a - Số thứ nhất
+ * @param b - Số thứ hai
+ * @returns Tổng của hai số
+ */
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+### Test Cases (Vietnamese)
+```typescript
+describe('Sleep Utilities', () => {
+  it('nên resolve sau số milliseconds được chỉ định', async () => {
+    // test implementation
+  });
+
+  it('nên xử lý giá trị âm bằng cách coi như 0', async () => {
+    // test implementation
+  });
+});
+```
+
+### Log Messages (English)
+```typescript
+console.log('User authentication successful');
+console.error('Failed to connect to database');
+```
+
+### Error Messages (English)
+```typescript
+throw new Error('Invalid input parameters');
+throw new Error('Database connection timeout');
+```
+
+- Add **usage examples** for complex functions
+- Keep documentation **up to date**

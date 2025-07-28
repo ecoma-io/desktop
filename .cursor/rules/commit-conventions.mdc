@@ -1,0 +1,49 @@
+# Commit Message Conventions
+
+## Format
+Always use conventional commit format: `<type>(<scope>): <subject>`
+
+## Rules
+- **Header must be lowercase** - no uppercase letters
+- **Header must not exceed 100 characters** - keep it concise
+- **Use conventional commit types**: feat, fix, docs, style, refactor, perf, test, chore
+- **Scope should be specific** to the area being changed
+- **Subject should be descriptive** but concise
+
+## Commit Types
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Build process, dependencies, tools
+
+## Common Scopes
+- `deps`: Dependencies updates
+
+## Examples
+
+### ✅ Good Examples (English)
+- `feat: add dark mode toggle component`
+- `fix: resolve memory leak in data processing`
+- `test: add comprehensive unit tests for sleep utilities`
+- `docs: update API documentation with examples`
+- `chore(deps): update dependencies to latest versions`
+- `refactor: simplify data validation logic`
+
+
+### ❌ Bad Examples
+- `Add new feature` (no type/scope)
+- `FIX BUG IN CORE MODULE` (uppercase)
+- `feat(ui): add a very long commit message that exceeds the 100 character limit and makes it hard to read` (too long)
+- `update code` (too generic)
+- `fix stuff` (vague description)
+
+## Guidelines
+1. Start with lowercase
+2. Use present tense ("add" not "added")
+3. Don't end with a period
+4. Be specific about what changed
+5. Keep it under 100 characters
