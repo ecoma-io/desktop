@@ -1,0 +1,42 @@
+{
+  "name": "@ecoma-io/electron-devkit",
+  "version": "0.0.0",
+  "description": "Development toolkit for Electron applications with Chrome extensions and devtools support",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "keywords": [
+    "electron",
+    "devtools",
+    "chrome-extensions",
+    "development",
+    "toolkit",
+    "debugging"
+  ],
+  "homepage": "https://github.com/ecoma-io/desktop/tree/main/packages/electron-devkit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecoma-io/desktop.git",
+    "directory": "packages/electron-devkit"
+  },
+  "author": {
+    "name": "ecoma.io",
+    "email": "contact@ecoma.io",
+    "url": "https://ecoma.io"
+  },
+  "license": "Proprietary",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.10.0",
+    "@ecoma-io/sleep": "0.0.0",
+    "tslib": "^2.8.1"
+  },
+  "peerDependencies": {
+    "electron": "^36.7.1"
+  },
+  "devDependencies": {
+    "tslib": "^2.8.1",
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^24.1.0",
+    "typescript": "^5.0.0"
+  }
+}
