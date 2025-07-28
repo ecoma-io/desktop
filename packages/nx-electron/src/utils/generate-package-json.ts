@@ -1,0 +1,108 @@
+import type { ProjectGraph } from '@nx/devkit';
+import { writeJsonFile, readJsonFile } from '@nx/devkit';
+import { BuildElectronBuilderOptions } from '../executors/build/executor';
+import { INDEX_OUTPUT_FILENAME } from './config';
+
+export interface PackageJson {
+  name: string;
+  version: string;
+  main: string;
+  dependencies: Record<string, string>;
+  author?: string;
+  description?: string;
+  license?: string;
+  private?: boolean;
+  [key: string]: unknown;
+}
+
+/**
+ * Creates a package.json in the output directory for support  to install dependencies within containers.
+ *
+ * If a package.json exists in the project, it will reuse that.
+ *
+ * @param projectName
+ * @param graph
+ * @param options
+ * @constructor
+ */
+export function generatePackageJson(
+  projectName: string,
+  graph: ProjectGraph,
+  options: BuildElectronBuilderOptions
+) {
+  // default package.json if one does not exist
+  let packageJson: PackageJson = {
+    name: projectName,
+    version: '0.0.1',
+    main: INDEX_OUTPUT_FILENAME,
+    dependencies: {},
+  };
+
+  try {
+    // try loading local project package json
+    packageJson = readJsonFile(`${options.projectRoot}/package.json`);
+    if (!packageJson.dependencies) {
+      packageJson.dependencies = {};
+    }
+  } catch {
+    //ignore
+  }
+
+  const rootPackageJson = readJsonFile(`${options.root}/package.json`);
+  const npmDeps = findAllNpmDeps(projectName, graph);
+  const implicitDeps = findAllNpmImplicitDeps(rootPackageJson, options.implicitDependencies);
+  const dependencies = Object.assign({}, implicitDeps, npmDeps);
+
+  packageJson.version = rootPackageJson.version || '0.0.0';
+  packageJson['author'] = packageJson['author'] || rootPackageJson.author || '';
+  packageJson['description'] = packageJson['description'] || rootPackageJson.description || '';
+  packageJson['license'] = packageJson['license'] || rootPackageJson.license || 'UNLICENSED';
+  packageJson['private'] = packageJson['private'] || rootPackageJson.private || true;
+
+  // update dependencies
+  Object.entries(dependencies).forEach(([packageName, version]) => {
+    // don't include devDeps
+    if (rootPackageJson.devDependencies?.[packageName]) {
+      return;
+    }
+    (packageJson.dependencies as Record<string, string>)[packageName] = version;
+  });
+
+  writeJsonFile(`${options.outputPath}/package.json`, packageJson);
+}
+
+function findAllNpmDeps(
+  projectName: string,
+  graph: ProjectGraph,
+  list: { [packageName: string]: string } = {},
+  seen = new Set<string>()
+) {
+  if (seen.has(projectName)) {
+    return list;
+  }
+
+  seen.add(projectName);
+
+  const node = graph.externalNodes ? graph.externalNodes[projectName] : graph.nodes[projectName];
+
+  if (node && node.type === 'npm') {
+    list[node.data.packageName] = node.data.version;
+  }
+  graph.dependencies[projectName]?.forEach(dep => {
+    findAllNpmDeps(dep.target, graph, list, seen);
+  });
+
+  return list;
+}
+
+function findAllNpmImplicitDeps(
+  packageJson: { dependencies: Record<string, string> },
+  implicitDeps: Array<string>
+) {
+  const dependencies: Record<string, string> = implicitDeps.reduce((acc, dep) => {
+    acc[dep] = packageJson.dependencies[dep];
+    return acc;
+  }, {} as Record<string, string>);
+
+  return dependencies;
+}

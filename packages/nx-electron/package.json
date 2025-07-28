@@ -1,0 +1,54 @@
+{
+  "name": "@ecoma-io/nx-electron",
+  "version": "0.0.0",
+  "description": "Nx executors for Electron development",
+  "keywords": [
+    "electron",
+    "typescript",
+    "tiktok",
+    "automation",
+    "toolkit",
+    "trpc",
+    "services"
+  ],
+  "author": {
+    "name": "ecoma.io",
+    "email": "contact@ecoma.io",
+    "url": "https://ecoma.io"
+  },
+  "homepage": "https://github.com/ecoma-io/desktop/tree/main/packages/nx-electron#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecoma-io/desktop.git",
+    "directory": "packages/nx-electron"
+  },
+  "license": "Proprietary",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "peerDependencies": {
+    "electron": "*",
+    "electron-builder": "*"
+  },
+  "dependencies": {
+    "rxjs": "~7.8.0",
+    "rxjs-for-await": "1.0.0",
+    "@nx/devkit": "21.3.2",
+    "@nx/js": "21.3.2",
+    "strip-json-comments": "3.1.1",
+    "tree-kill": "1.2.2",
+    "webpack": "5.99.9",
+    "typescript": "~5.8.2",
+    "license-webpack-plugin": "4.0.2",
+    "fork-ts-checker-webpack-plugin": "7.2.13",
+    "tsconfig-paths-webpack-plugin": "4.0.0",
+    "copy-webpack-plugin": "10.2.4",
+    "ts-loader": "9.5.2",
+    "webpack-merge": "5.10.0",
+    "webpack-node-externals": "^3.0.0",
+    "terser-webpack-plugin": "5.3.14",
+    "tslib": "^2.3.0"
+  },
+  "executors": "./executors.json"
+}

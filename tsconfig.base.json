@@ -19,6 +19,7 @@
     "isolatedModules": true,
     "emitDecoratorMetadata": false,
     "paths": {
+      "@ecoma-io/nx-electron": ["packages/nx-electron/src/index.ts"],
       "@ecoma-io/sleep": ["packages/sleep/src/index.ts"]
     }
   },
