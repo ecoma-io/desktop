@@ -1,0 +1,34 @@
+{
+  "name": "@ecoma-io/sleep",
+  "description": "Sleep promise utility",
+  "version": "0.0.0",
+  "license": "Proprietary",
+  "private": false,
+  "keywords": [
+    "sleep",
+    "promise",
+    "utility"
+  ],
+  "author": {
+    "name": "ecoma.io",
+    "email": "contact@ecoma.io",
+    "url": "https://ecoma.io"
+  },
+  "homepage": "https://github.com/ecoma-io/desktop/tree/main/packages/sleep#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecoma-io/desktop.git",
+    "directory": "packages/sleep"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "build": "nx build sleep",
+    "test": "nx test sleep",
+    "lint": "nx lint sleep"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  }
+}

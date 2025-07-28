@@ -18,7 +18,9 @@
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
     "emitDecoratorMetadata": false,
-    "paths": {}
+    "paths": {
+      "@ecoma-io/sleep": ["packages/sleep/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp", "dist", "coverage"]
 }
