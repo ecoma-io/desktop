@@ -1,0 +1,62 @@
+{
+  "name": "@ecoma-io/electron-kit",
+  "version": "0.0.0",
+  "description": "Electron development toolkit for TikTok automation tools",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+   ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./preload.js": {
+      "types": "./src/preload.d.ts",
+      "default": "./src/preload.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "electron",
+    "typescript",
+    "tiktok",
+    "automation",
+    "toolkit",
+    "trpc",
+    "services"
+  ],
+  "author": {
+    "name": "ecoma.io",
+    "email": "contact@ecoma.io",
+    "url": "https://ecoma.io"
+  },
+  "homepage": "https://github.com/ecoma-io/desktop/tree/main/packages/electron-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecoma-io/desktop.git",
+    "directory": "packages/electron-kit"
+  },
+  "license": "Proprietary",
+  "dependencies": {
+    "@trpc/client": "^11.0.0",
+    "@trpc/server": "^11.0.0",
+    "electron-log": "^5.4.1",
+    "electron-store": "^10.1.0",
+    "electron-updater": "^6.6.2",
+    "express": "^5.1.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "~7.8.0",
+    "trpc-electron": "^0.1.2",
+    "tslib": "^2.8.1",
+    "tsyringe": "^4.10.0",
+    "uuid": "^11.1.0",
+    "zod": "^4.0.5",
+    "@ecoma-io/sleep": "0.0.0"
+  },
+  "peerDependencies": {
+    "electron": "^36.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "typescript": "^5.0.0"
+  }
+}

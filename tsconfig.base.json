@@ -19,6 +19,8 @@
     "isolatedModules": true,
     "emitDecoratorMetadata": false,
     "paths": {
+      "@ecoma-io/electron-kit": ["packages/electron-kit/src/index.ts"],
+      "@ecoma-io/electron-kit/preload": ["packages/electron-kit/src/preload.ts"],
       "@ecoma-io/electron-testkit": ["packages/electron-testkit/src/index.ts"],
       "@ecoma-io/nx-electron": ["packages/nx-electron/src/index.ts"],
       "@ecoma-io/sleep": ["packages/sleep/src/index.ts"]
