@@ -1,6 +1,6 @@
 {
   "name": "@ecoma-io/nx-electron",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Nx executors for Electron development",
   "keywords": [
     "electron",

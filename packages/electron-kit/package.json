@@ -1,11 +1,11 @@
 {
   "name": "@ecoma-io/electron-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Electron development toolkit for TikTok automation tools",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "exports": {
-   ".": {
+    ".": {
       "types": "./src/index.d.ts",
       "default": "./src/index.js"
     },
@@ -50,7 +50,7 @@
     "tsyringe": "^4.10.0",
     "uuid": "^11.1.0",
     "zod": "^4.0.5",
-    "@ecoma-io/sleep": "0.0.0"
+    "@ecoma-io/sleep": "0.1.0"
   },
   "peerDependencies": {
     "electron": "^36.7.1"

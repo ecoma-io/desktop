@@ -1,7 +1,7 @@
 {
   "name": "@ecoma-io/sleep",
   "description": "Sleep promise utility",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "Proprietary",
   "private": false,
   "keywords": [

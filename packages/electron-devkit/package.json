@@ -1,6 +1,6 @@
 {
   "name": "@ecoma-io/electron-devkit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Development toolkit for Electron applications with Chrome extensions and devtools support",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
@@ -27,7 +27,7 @@
   "dependencies": {
     "adm-zip": "^0.5.16",
     "axios": "^1.10.0",
-    "@ecoma-io/sleep": "0.0.0",
+    "@ecoma-io/sleep": "0.1.0",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {

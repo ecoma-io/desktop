@@ -1,6 +1,6 @@
 {
   "name": "@ecoma-io/electron-testkit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Electron testing toolkit",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
@@ -30,7 +30,7 @@
     "playwright-core": "1.53.2",
     "axios": "^1.10.0",
     "tslib": "^2.8.1",
-    "@ecoma-io/sleep": "0.0.0"
+    "@ecoma-io/sleep": "0.1.0"
   },
   "peerDependencies": {
     "@nx/devkit": "21.3.2",
