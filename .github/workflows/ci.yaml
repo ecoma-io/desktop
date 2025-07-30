@@ -1,0 +1,45 @@
+name: 'CI'
+
+on:
+  merge_group:
+  pull_request:
+    branches:
+      - dev
+      - main
+  push:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+
+  ci:
+    name: CI
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Project
+      uses: ./.github/actions/setup-project
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Lint, Test, Build, E2E
+      shell: bash
+      env:
+        GITHUB_EVENT_NAME: ${{ github.event_name }}
+        GITHUB_REF: ${{ github.ref }}
+        BASE_SHA: ${{ github.event.pull_request.base.sha || '' }}
+        HEAD_SHA: ${{ github.event.pull_request.head.sha || '' }}
+      run: |
+        if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+          npx nx run-many -t lint -t test -t build -t package -t automate --verbose
+        else
+          npx nx affected --base="$BASE_SHA" --head="$HEAD_SHA" -t lint -t test -t build -t package -t automate --verbose
+        fi

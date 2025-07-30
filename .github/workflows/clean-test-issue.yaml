@@ -1,0 +1,31 @@
+name: Clean and Close [testing] Issues
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  clean_and_close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clean and close issues in both repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          echo "Processing repo: $OWNER/$REPO"
+          # Get all open issues with [testing] in the title
+          issues=$(GH_TOKEN="$GH_TOKEN" gh issue list -R "$OWNER/$REPO" --state open --search "[testing]" --json number,title --jq '.[] | select(.title | test("\\[testing\\]")) | .number')
+          for issue in $issues; do
+            echo "Processing issue #$issue"
+            # Remove all labels
+            labels=$(GH_TOKEN="$GH_TOKEN" gh issue view $issue -R "$OWNER/$REPO" --json labels --jq '.labels[].name')
+            for label in $labels; do
+              GH_TOKEN="$GH_TOKEN" gh issue edit $issue -R "$OWNER/$REPO" --remove-label "$label"
+            done
+            # Close the issue
+            GH_TOKEN="$GH_TOKEN" gh issue close $issue -R "$OWNER/$REPO"
+          done
+        shell: bash

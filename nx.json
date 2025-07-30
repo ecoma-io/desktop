@@ -17,7 +17,9 @@
   },
   "targetDefaults": {
     "build": {
-      "cache": true
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "lint": {
       "cache": true,
@@ -40,17 +42,18 @@
         "projects": ["workspace", "tag:type:public-shared-packages"]
       }
     },
-    "git": {
-      "commitMessage": "chore(release): update version and changelog",
-      "stageChanges": true,
-      "commit": true,
-      "tag": true
-    },
     "version": {
       "updateDependents": "auto",
       "currentVersionResolver": "git-tag",
       "fallbackCurrentVersionResolver": "disk",
       "specifierSource": "conventional-commits"
+    },
+    "git": {
+      "commitMessage": "ci(release): bump version, update changelog and release [skip ci]",
+      "stageChanges": true,
+      "commit": true,
+      "tag": true,
+      "push": true
     },
     "changelog": {
       "automaticFromRef": true,

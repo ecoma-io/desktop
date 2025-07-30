@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "Ecoma desktop application monorepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecoma-io/desktop.git"
+  },
   "license": "Proprietary",
   "author": {
     "name": "ecoma.io",

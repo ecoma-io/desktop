@@ -1,0 +1,69 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":semanticCommits", ":semanticCommitTypeAll(chore)"],
+  "baseBranches": ["dev"],
+  "schedule": ["weekly"],
+  "timezone": "Asia/Ho_Chi_Minh",
+  "branchPrefix": "renovate/",
+  "dependencyDashboard": true,
+  "rangeStrategy": "bump",
+  "bumpVersion": "patch",
+  "commitMessageAction": "Update",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "labels": ["dependencies"],
+  "assignees": [],
+  "reviewers": [],
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 10,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automergeType": "pr",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "automergeType": "pr",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "matchPackagePatterns": ["^@nx/"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "^@angular/",
+        "^@angular-devkit/",
+        "^@schematics/angular",
+        "jest-preset-angular",
+        "angular-eslint"
+      ],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "automerge": false,
+      "groupName": "angular"
+    },
+    {
+      "matchPackagePatterns": [
+        "electron",
+        "electron-builder",
+        "electron-updater",
+        "electron-log",
+        "electron-store"
+      ],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "automerge": false,
+      "groupName": "electron"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}

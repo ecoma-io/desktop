@@ -23,7 +23,6 @@
     "directory": "packages/nx-electron"
   },
   "license": "Proprietary",
-  "private": true,
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",

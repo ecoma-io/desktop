@@ -1,0 +1,52 @@
+name: Setup Project
+description: Setup Node.js, cache npm dependencies and install dependencies
+
+inputs:
+  token:
+    description: 'GitHub token'
+    required: true
+
+outputs:
+  cache-hit:
+    description: 'Whether the cache was hit or not'
+    value: ${{ steps.cache-npm.outputs.cache-hit }}
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        node-version-file: package.json
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@ecoma-io'
+        token: ${{ inputs.token }}
+
+    - name: Setup npm cache env and git config
+      shell: bash
+      run: |
+        echo "NPM_CONFIG_CACHE=$(npm config get cache)" >> $GITHUB_ENV
+        git config --global user.name 'ecoma-io[bot]'
+        git config --global user.email 'no-reply@ecoma.io'
+
+    - name: Cache npm dependencies
+      id: cache-npm
+      uses: actions/cache@v4
+      with:
+        path: |
+          ${{ env.NPM_CONFIG_CACHE }}
+          node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies or run postinstall
+      shell: bash
+      run: |
+        # Kiểm tra nếu cache đã hit
+        if [[ "${{ steps.cache-npm.outputs.cache-hit }}" == "true" ]]; then
+          echo "Cache hit!"
+        else
+          echo "Cache miss. Installing dependencies..."
+          npm ci --prefer-offline --no-audit --ignore-scripts
+        fi
+        npm run postinstall

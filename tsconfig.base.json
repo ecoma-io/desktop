@@ -9,6 +9,8 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "importHelpers": true,
+    "target": "es2023",
+    "moduleResolution": "node",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,

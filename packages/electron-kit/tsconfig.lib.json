@@ -1,10 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": true,
-    "target": "es2023",
-    "moduleResolution": "node",
     "module": "commonjs",
     "types": ["node"]
   },
